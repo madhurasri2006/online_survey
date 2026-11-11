@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
 
-const API = "http://localhost:8080/api";
+const API = "https://online-survey-4sef.onrender.com";
 
 function GetAllDAta() {
   const [feedbacks, setFeedbacks] = useState([]);

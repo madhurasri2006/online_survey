@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-
+const API = "YOUR_RENDER_BACKEND_URL/api";
 const emptyForm = {
   name: "",
   department: "",
@@ -63,12 +63,12 @@ function App() {
     try {
       if (editingId) {
         await axios.put(
-          `http://localhost:8080/api/feedback/${editingId}`,
+          `${API}/feedback/${editingId}`,
           data
         );
         alert("Feedback updated successfully!");
       } else {
-        await axios.post("http://localhost:8080/api/feedback", data);
+        await axios.post(`${API}/feedback`, data);
         alert("Feedback submitted successfully!");
       }
 
