@@ -3,8 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./App.css";
-
-const API = "https://online-survey-4sef.onrender.com";
+const API = "https://online-survey-4sef.onrender.com/api";
 
 function GetAllDAta() {
   const [feedbacks, setFeedbacks] = useState([]);
