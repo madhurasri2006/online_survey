@@ -10,10 +10,17 @@ import App from "./App.jsx";
 import GetAllDAta from "./GetAllDAta.jsx";
 import "./index.css";
 
-const router = createBrowserRouter([
-  { path: "/", element: <App /> },
-  { path: "/getAllData", element: <GetAllDAta /> }
-]);
+const router = createBrowserRouter(
+  [
+    { path: "/", element: <App /> },
+    { path: "/getAllData", element: <GetAllDAta /> }
+  ],
+  {
+    basename: window.location.hostname.endsWith("github.io")
+      ? "/online_survey"
+      : "/"
+  }
+);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
