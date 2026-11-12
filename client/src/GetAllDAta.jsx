@@ -74,18 +74,28 @@ function GetAllDAta() {
     count: feedbacks.filter(item => Number(item.rating) === rating).length
   }));
 
-  const deleteFeedback = async id => {
-    if (!window.confirm("Are you sure you want to delete this feedback?")) {
-      return;
-    }
+  
+const deleteFeedback = async id => {
+  if (!window.confirm("Are you sure you want to delete this feedback?")) {
+    return;
+  }
 
-    try {
-      await axios.delete(`${API}/feedback/${id}`);
-      setFeedbacks(old => old.filter(item => item._id !== id));
-    } catch {
-      alert("Could not delete feedback.");
-    }
-  };
+  try {
+    const res = await axios.delete(`${API}/feedback/${id}`);
+
+    setFeedbacks(old => old.filter(item => item._id !== id));
+
+    alert("Feedback deleted successfully!");
+  } catch (err) {
+    console.error("Delete error:", err.response?.data || err.message);
+    alert(
+      `Delete failed: ${err.response?.status || err.message}`
+    );
+  }
+};
+
+
+    
 
   const exportCSV = () => {
     const columns = [
@@ -258,6 +268,7 @@ function GetAllDAta() {
         </>
       )}
     </div>
+
   );
 }
 
